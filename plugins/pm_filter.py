@@ -1422,9 +1422,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons = [[
-            InlineKeyboardButton('Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ', url=GRP_LNK),
-            InlineKeyboardButton('Sᴏᴜʀᴄᴇ Cᴏᴅᴇ', callback_data='source')
+            InlineKeyboardButton('Sᴏᴜʀᴄᴇ', callback_data='donation'),
+            InlineKeyboardButton('Dᴏɴᴀᴛɪᴏɴ', callback_data='source')
         ],[
+            InlineKeyboardButton('Rᴇᴘᴏʀᴛ Bᴜɢꜱ & Fᴇᴇᴅʙᴀᴄᴋ',url=f'https://t.me/naruto_support_ch')
+        ],[ 
             InlineKeyboardButton('Hᴏᴍᴇ', callback_data='start'),
             InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close_data')
         ]]
@@ -1469,6 +1471,30 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
         await query.message.edit_text(
             text=script.SOURCE_TXT,
+            reply_markup=reply_markup,
+            parse_mode=enums.ParseMode.HTML
+        )
+    elif query.data == "donation":
+        buttons = [[
+            InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='about')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text="● ◌ ◌"
+        )
+        await query.message.edit_text(
+            text="● ● ◌"
+        )
+        await query.message.edit_text(
+            text="● ● ●"
+        )
+        await client.edit_message_media(
+            query.message.chat.id, 
+            query.message.id, 
+            InputMediaPhoto(https://graph.org/file/e8276bc012861607421a4.jpg)
+        )
+        await query.message.edit_text(
+            text=script.DONATION_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
