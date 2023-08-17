@@ -1491,14 +1491,13 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.edit_message_media(
             query.message.chat.id, 
             query.message.id, 
-            InputMediaPhoto(https://graph.org/file/e8276bc012861607421a4.jpg)
+            InputMediaPhoto("https://graph.org/file/e8276bc012861607421a4.jpg")
         )
         await query.message.edit_text(
             text=script.DONATION_TXT,
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-    
     elif query.data == "manuelfilter":
         buttons = [[
             InlineKeyboardButton('⟸ Bᴀᴄᴋ', callback_data='filters'),
